@@ -3,4 +3,6 @@ class PageController < ApplicationController
   end
   def popularproducts
   end
+  def createyourbasket
+  end
 end
