@@ -25,6 +25,12 @@
       <li><a href="/about">About</a></li>
       <li><a href="/popularproducts">Popular Products</a></li> 
       <li><a href="/createyourbasket">Create your basket</a></li>
+      <% if user_signed_in? %>
+        <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
+      <% else %>
+        <li><%= link_to "Sign Up", new_user_registration_path %></li>
+        <li><%= link_to "Sign In", new_user_session_path %></li>
+      <% end %> 
     </ul>
   </div><!-- /.navbar-collapse -->
 </nav>
@@ -38,6 +44,9 @@
 <body>
 
 <div class="container">
+  <% flash.each do |name, msg| %>
+    <%= content_tag(:div, msg, class: "alert alert-info") %>
+  <% end %>
 <%= yield %>
 </div>
 
